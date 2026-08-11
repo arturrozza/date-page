@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite para jantar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="estrelas" id="estrelas"></div>
+
+<div class="palco">
+
+  <!-- CENA 1: CONVITE -->
+  <section class="cena ativa" id="cena-convite">
+    <h1>Topa jantar<br>comigo?</h1>
+    <p class="sub">"Sua única preocupação é com o look o resto deixa pra mim."</p>
+
+    <div class="btns" id="area-btns">
+      <button class="btn btn-sim" id="btn-sim">Sim <span class="coracao">❤️</span></button>
+      <button class="btn btn-nao" id="btn-nao">Não</button>
+    </div>
+  </section>
+
+  <!-- CENA 2: CARDÁPIO -->
+  <section class="cena" id="cena-cardapio">
+    <div class="eyebrow">passo 1 de 2</div>
+    <h1 style="font-size:clamp(26px,6vw,34px)">Com fome de quê?</h1>
+    <p class="sub">Escolhe o clima da noite.</p>
+
+    <div class="grid-comida" id="grid-comida">
+      <div class="card-comida" data-comida="Pizza"><span class="emoji">🍕</span><span class="nome">Pizza</span></div>
+      <div class="card-comida" data-comida="Sushi"><span class="emoji">🍣</span><span class="nome">Sushi</span></div>
+      <div class="card-comida" data-comida="Hambúrguer"><span class="emoji">🍔</span><span class="nome">Hambúrguer</span></div>
+      <div class="card-comida" data-comida="Italiana"><span class="emoji">🍝</span><span class="nome">Italiana</span></div>
+      <div class="card-comida" data-comida="Churrasco"><span class="emoji">🥩</span><span class="nome">Churrasco</span></div>
+      <div class="card-comida" data-comida="Você escolhe"><span class="emoji">🎲</span><span class="nome">Você escolhe</span></div>
+    </div>
+
+    <button class="btn-principal" id="btn-continuar-comida" disabled>Continuar</button>
+    <br>
+    <button class="voltar" id="voltar-1">← voltar</button>
+  </section>
+
+  <!-- CENA 3: DATA E HORA -->
+  <section class="cena" id="cena-datahora">
+    <div class="eyebrow">passo 2 de 2</div>
+    <h1 style="font-size:clamp(26px,6vw,34px)">Quando rola?</h1>
+    <p class="sub">Escolhe o dia e a hora que ficar melhor pra você.</p>
+
+    <div class="campo">
+      <label for="input-data">Data</label>
+      <input type="date" id="input-data">
+    </div>
+    <div class="campo">
+      <label for="input-hora">Horário</label>
+      <input type="time" id="input-hora" value="19:30">
+    </div>
+
+    <button class="btn-principal" id="btn-confirmar" disabled>Confirmar jantar</button>
+    <br>
+    <button class="voltar" id="voltar-2">← voltar</button>
+  </section>
+
+  <!-- CENA 4: CONFIRMAÇÃO -->
+  <section class="cena" id="cena-confirmacao">
+    <div class="selo">💌</div>
+    <h1>Combinado!</h1>
+    <img class="figurinha" src="assets/figurinha-ansioso.png" alt="pensa num bicho ansioso">
+
+    <div class="resumo">
+      <div class="resumo-linha"><span class="rotulo">Comida</span><span class="valor" id="resumo-comida">—</span></div>
+      <div class="resumo-linha"><span class="rotulo">Data</span><span class="valor" id="resumo-data">—</span></div>
+      <div class="resumo-linha"><span class="rotulo">Hora</span><span class="valor" id="resumo-hora">—</span></div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

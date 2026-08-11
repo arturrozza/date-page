@@ -1,0 +1,226 @@
+:root{
+  --noite: #1a0a10;
+  --noite2: #260f18;
+  --vinho: #3d0f1e;
+  --rosa: #ee9ec4;
+  --rosa-clara: #f6c3dd;
+  --rosa-forte: #e57eb0;
+  --creme: #fbeef1;
+  --verde-ok: #6fae8c;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family: 'Quicksand', sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 15%, rgba(238,158,196,0.08), transparent 45%),
+    radial-gradient(ellipse at 80% 90%, rgba(61,15,30,0.55), transparent 55%),
+    linear-gradient(160deg, var(--noite) 0%, var(--noite2) 60%, #0f070a 100%);
+  color: var(--creme);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* estrelinhas */
+.estrelas{
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+}
+.estrela{
+  position:absolute; width:2px; height:2px; background:var(--rosa-clara);
+  border-radius:50%; opacity:.6;
+  animation: piscar 3s ease-in-out infinite;
+}
+@keyframes piscar{ 0%,100%{opacity:.15} 50%{opacity:.9} }
+
+.palco{
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding: 32px 18px;
+}
+
+.cena{
+  width:100%; max-width:520px;
+  text-align:center;
+  display:none;
+  animation: subir .6s cubic-bezier(.2,.8,.2,1) both;
+}
+.cena.ativa{ display:block; }
+
+@keyframes subir{
+  from{ opacity:0; transform: translateY(18px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.eyebrow{
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--rosa);
+  margin-bottom: 10px;
+  font-weight:600;
+}
+
+h1{
+  font-family:'Playfair Display', serif;
+  font-style:normal;
+  font-weight:700;
+  font-size: clamp(30px, 7vw, 46px);
+  line-height:1.15;
+  margin: 0 0 14px;
+  color: var(--creme);
+}
+
+p.sub{
+  font-family:'Playfair Display', serif;
+  font-style: italic;
+  font-weight:500;
+  font-size:16px;
+  color: rgba(251,238,241,.75);
+  margin: 0 0 34px;
+  line-height:1.5;
+}
+
+.btns{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:8px; position:relative; min-height:60px; }
+
+.btn{
+  border:none; cursor:pointer;
+  font-family:'Quicksand', sans-serif; font-weight:700; font-size:16px;
+  padding: 14px 30px; border-radius: 999px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:active{ transform: scale(.96); }
+.btn:focus-visible{ outline:3px solid var(--rosa-clara); outline-offset:3px; }
+
+.btn-sim{
+  background: var(--rosa);
+  color: #3a0f1f;
+  box-shadow: 0 8px 24px rgba(238,158,196,.35);
+}
+.btn-sim:hover{ transform: translateY(-2px); background: var(--rosa-forte); box-shadow: 0 12px 28px rgba(238,158,196,.45); }
+
+.coracao{ font-size:14px; margin-left:2px; }
+
+.btn-nao{
+  background: rgba(255,255,255,.08);
+  color: var(--creme);
+  border: 1px solid rgba(255,255,255,.25);
+  position: relative;
+  will-change: transform;
+}
+
+/* grid de comidas */
+.grid-comida{
+  display:grid; grid-template-columns: repeat(2,1fr); gap:12px;
+  margin: 22px 0 26px;
+  text-align:left;
+}
+@media (min-width:480px){ .grid-comida{ grid-template-columns: repeat(3,1fr); } }
+
+.card-comida{
+  background: rgba(255,255,255,.05);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 16px 10px;
+  text-align:center;
+  cursor:pointer;
+  transition: all .15s ease;
+  user-select:none;
+}
+.card-comida:hover{ border-color: rgba(232,176,75,.5); transform: translateY(-2px); }
+.card-comida.selecionado{
+  border-color: var(--rosa);
+  background: rgba(232,176,75,.14);
+  box-shadow: 0 0 0 1px var(--rosa) inset;
+}
+.card-comida .emoji{ font-size:26px; display:block; margin-bottom:6px; }
+.card-comida .nome{ font-size:13px; font-weight:600; color: var(--creme); }
+
+/* data e hora */
+.campo{
+  text-align:left; margin-bottom:18px;
+}
+.campo label{
+  display:block; font-size:13px; font-weight:700; letter-spacing:.05em;
+  text-transform:uppercase; color: var(--rosa); margin-bottom:8px;
+}
+input[type="date"], input[type="time"]{
+  width:100%;
+  font-family:'Quicksand', sans-serif; font-weight:600; font-size:16px;
+  padding: 13px 16px; border-radius:12px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.18);
+  color: var(--creme);
+  color-scheme: dark;
+}
+input[type="date"]:focus, input[type="time"]:focus{
+  outline:none; border-color: var(--rosa);
+}
+
+.linha2{ display:flex; gap:12px; }
+.linha2 .campo{ flex:1; }
+
+.btn-principal{
+  width:100%;
+  background: var(--rosa);
+  color:#3a0f1f;
+  font-weight:700; font-size:16px;
+  padding:15px; border:none; border-radius:14px; cursor:pointer;
+  transition: transform .15s ease, opacity .2s ease, background .15s ease;
+}
+.btn-principal:disabled{ opacity:.35; cursor:not-allowed; }
+.btn-principal:not(:disabled):hover{ transform: translateY(-2px); background: var(--rosa-forte); }
+
+.voltar{
+  display:inline-block; margin-top:16px; font-size:13px;
+  color: rgba(251,238,241,.55); cursor:pointer; text-decoration:underline;
+  background:none; border:none; font-family:inherit;
+}
+
+/* confirmação */
+.figurinha{
+  width: 100%;
+  max-width: 280px;
+  border-radius: 18px;
+  margin: 4px 0 30px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.selo{
+  font-size:52px; margin-bottom:6px;
+  animation: bater 1.1s ease-in-out infinite;
+}
+@keyframes bater{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.12);} }
+
+.resumo{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;
+  padding: 20px 22px;
+  margin: 22px 0;
+  text-align:left;
+}
+.resumo-linha{
+  display:flex; justify-content:space-between; gap:12px;
+  padding:9px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.12);
+  font-size:14px;
+}
+.resumo-linha:last-child{ border-bottom:none; }
+.resumo-linha .rotulo{ color: rgba(251,238,241,.55); }
+.resumo-linha .valor{ font-weight:700; color: var(--rosa-clara); text-align:right; }
+
+.rodape-nota{ font-size:13px; color: rgba(251,238,241,.4); margin-top:18px; }
+
+/* confete */
+.confete{
+  position:fixed; top:-10px; z-index:60; border-radius:2px; pointer-events:none;
+  animation: cair linear forwards;
+}
+@keyframes cair{
+  to{ transform: translateY(110vh) rotate(540deg); opacity:.9; }
+}
