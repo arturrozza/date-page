@@ -224,3 +224,215 @@ input[type="date"]:focus, input[type="time"]:focus{
 @keyframes cair{
   to{ transform: translateY(110vh) rotate(540deg); opacity:.9; }
 }
+
+
+/* =========================================================
+   AJUSTES PARA CELULAR
+   ========================================================= */
+
+@media (max-width: 600px){
+
+  body{
+    min-height: 100svh;
+  }
+
+  .palco{
+    min-height: 100svh;
+    padding: 24px 16px;
+    align-items: center;
+  }
+
+  .cena{
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* -----------------------------------------
+     TÍTULOS
+     ----------------------------------------- */
+
+  h1{
+    font-size: clamp(32px, 10vw, 42px);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  p.sub{
+    font-size: 15px;
+    line-height: 1.45;
+    margin-bottom: 28px;
+  }
+
+
+  /* -----------------------------------------
+     BOTÕES DO CONVITE
+     ----------------------------------------- */
+
+  .btns{
+    gap: 12px;
+    min-height: 58px;
+  }
+
+  .btn{
+    font-size: 15px;
+    padding: 13px 25px;
+  }
+
+
+  /* -----------------------------------------
+     CARDÁPIO
+     ----------------------------------------- */
+
+  .grid-comida{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0 22px;
+  }
+
+  .card-comida{
+    padding: 15px 8px;
+    min-height: 92px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .card-comida .emoji{
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+  .card-comida .nome{
+    font-size: 12px;
+  }
+
+
+  /* -----------------------------------------
+     DATA E HORA
+     ----------------------------------------- */
+
+  .campo{
+    margin-bottom: 15px;
+  }
+
+  .campo label{
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+
+  input[type="date"],
+  input[type="time"]{
+    font-size: 16px;
+    padding: 13px 14px;
+  }
+
+
+  /* -----------------------------------------
+     BOTÃO PRINCIPAL
+     ----------------------------------------- */
+
+  .btn-principal{
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .voltar{
+    margin-top: 14px;
+  }
+
+
+  /* -----------------------------------------
+     CONFIRMAÇÃO
+     ----------------------------------------- */
+
+  .selo{
+    font-size: 44px;
+    margin-bottom: 4px;
+  }
+
+  .figurinha{
+    width: 75%;
+    max-width: 240px;
+    margin: 2px auto 22px;
+    display:block;
+    border-radius: 16px;
+  }
+
+  .resumo{
+    width: 100%;
+    padding: 15px 16px;
+    margin: 18px 0 0;
+    border-radius: 14px;
+  }
+
+  .resumo-linha{
+    font-size: 13px;
+    padding: 9px 0;
+    gap: 10px;
+  }
+
+  .resumo-linha .rotulo{
+    flex-shrink: 0;
+  }
+
+  .resumo-linha .valor{
+    max-width: 70%;
+    line-height: 1.35;
+  }
+
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px){
+
+  .palco{
+    padding: 20px 13px;
+  }
+
+  h1{
+    font-size: 30px;
+  }
+
+  p.sub{
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .grid-comida{
+    gap: 8px;
+  }
+
+  .card-comida{
+    min-height: 84px;
+    padding: 12px 6px;
+  }
+
+  .card-comida .emoji{
+    font-size: 23px;
+  }
+
+  .card-comida .nome{
+    font-size: 11px;
+  }
+
+  .figurinha{
+    width: 72%;
+    max-width: 210px;
+  }
+
+  .resumo{
+    padding: 13px 14px;
+  }
+
+  .resumo-linha{
+    font-size: 12px;
+  }
+
+}

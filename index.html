@@ -198,17 +198,12 @@
   mas permite que o Netlify reconheça o formulário
   e armazene as respostas no painel Forms.
 -->
-<form
-  name="respostas-jantar"
-  method="POST"
-  data-netlify="true"
->
-  <input type="hidden" name="form-name" value="respostas-jantar">
-  <input type="text" name="comida">
-  <input type="text" name="data">
-  <input type="text" name="hora">
+<form name="respostas-jantar" method="POST" data-netlify="true" style="display:none;">
+    <input type="hidden" name="form-name" value="respostas-jantar">
+    <input type="hidden" name="comida">
+    <input type="hidden" name="data">
+    <input type="hidden" name="hora">
 </form>
-
 
 <script src="script.js"></script>
 
