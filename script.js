@@ -1,4 +1,21 @@
 (function(){
+  // ⚠️ troque pelo seu número com DDI+DDD, só números (ex: 55 47 99999-8888 → "5547999998888")
+  const NUMERO_WHATSAPP = "5547991879481";
+
+  function montarLinkWhatsapp(comida, data, hora){
+    const texto = `Combinado! 🎉\nComida: ${comida}\nData: ${data}\nHora: ${hora}`;
+    return `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(texto)}`;
+  }
+
+  function enviarParaNetlify(dados){
+    const corpo = new URLSearchParams({ "form-name": "respostas-jantar", ...dados }).toString();
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: corpo
+    }).catch(()=>{ /* se falhar (ex: rodando local sem Netlify), não trava a experiência */ });
+  }
+
   // estrelinhas de fundo
   const estrelasEl = document.getElementById('estrelas');
   for(let i=0;i<60;i++){
@@ -141,9 +158,20 @@
     const [ano,mes,dia] = inputData.value.split('-');
     const dataObj = new Date(ano, mes-1, dia);
     const dataFormatada = dataObj.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long' });
-    document.getElementById('resumo-data').textContent = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+    const dataExibida = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+    document.getElementById('resumo-data').textContent = dataExibida;
 
     document.getElementById('resumo-hora').textContent = inputHora.value;
+
+    // manda pro painel de Forms do Netlify
+    enviarParaNetlify({
+      comida: comidaEscolhida || '—',
+      data: dataExibida,
+      hora: inputHora.value
+    });
+
+    // deixa pronto o botão de mandar a confirmação no WhatsApp
+    document.getElementById('btn-whatsapp').href = montarLinkWhatsapp(comidaEscolhida || '—', dataExibida, inputHora.value);
 
     dispararConfete();
     irPara('cena-confirmacao');
