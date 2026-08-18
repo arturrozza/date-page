@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>datezinho</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,11 +65,15 @@
 
     <div class="campo">
       <label for="input-data">Data</label>
-      <input type="date" id="input-data">
+      <div class="input-shell">
+        <input type="date" id="input-data">
+      </div>
     </div>
     <div class="campo">
       <label for="input-hora">Horário</label>
-      <input type="time" id="input-hora" value="19:30">
+      <div class="input-shell">
+        <input type="time" id="input-hora" value="19:30">
+      </div>
     </div>
 
     <button class="btn-principal" id="btn-confirmar" disabled>Confirmar jantar</button>

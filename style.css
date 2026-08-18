@@ -11,9 +11,15 @@
 
 *{ box-sizing: border-box; }
 
+html{
+  background: var(--noite);
+  height:100%;
+}
+
 body{
   margin:0;
   min-height:100vh;
+  min-height:100dvh;
   font-family: 'Quicksand', sans-serif;
   background:
     radial-gradient(ellipse at 50% 15%, rgba(238,158,196,0.08), transparent 45%),
@@ -21,6 +27,7 @@ body{
     linear-gradient(160deg, var(--noite) 0%, var(--noite2) 60%, #0f070a 100%);
   color: var(--creme);
   overflow-x:hidden;
+  overscroll-behavior-y: none;
   position:relative;
 }
 
@@ -38,8 +45,11 @@ body{
 .palco{
   position:relative; z-index:1;
   min-height:100vh;
+  min-height:100dvh;
   display:flex; align-items:center; justify-content:center;
   padding: 32px 18px;
+  padding-top: max(32px, env(safe-area-inset-top));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
 }
 
 .cena{
@@ -165,15 +175,35 @@ p.sub{
 }
 input[type="date"], input[type="time"]{
   width:100%;
+  min-width:0;
   font-family:'Quicksand', sans-serif; font-weight:600; font-size:16px;
-  padding: 13px 16px; border-radius:12px;
-  background: rgba(255,255,255,.06);
-  border: 1.5px solid rgba(255,255,255,.18);
+  padding: 0; border:none;
+  background: transparent;
   color: var(--creme);
   color-scheme: dark;
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 22px;
 }
+input[type="date"]::-webkit-date-and-time-value,
+input[type="time"]::-webkit-date-and-time-value{
+  text-align: left;
+}
+
+.input-shell{
+  display:flex;
+  align-items:center;
+  width:100%;
+  overflow:hidden;
+  border-radius:12px;
+  padding: 13px 16px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.18);
+  transition: border-color .15s ease;
+}
+.input-shell:focus-within{ border-color: var(--rosa); }
 input[type="date"]:focus, input[type="time"]:focus{
-  outline:none; border-color: var(--rosa);
+  outline:none;
 }
 
 .linha2{ display:flex; gap:12px; }
